@@ -1,8 +1,0 @@
-array(3) {
-  ["temp1key"]=>
-  string(10) "temp1vaule"
-  ["temp2key"]=>
-  string(10) "temp2vaule"
-  ["temp3key"]=>
-  string(10) "temp3vaule"
-}
