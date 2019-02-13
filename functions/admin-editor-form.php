@@ -10,6 +10,7 @@ function theme_editor_form(){
 
   <?php
   $sunya_options = get_option( 'sunya_options' );
+  var_dump($sunya_options);
   ?>
 
   <div class="wrap">
@@ -39,14 +40,13 @@ function theme_editor_form(){
           <p>２つめのタブの内容を記載します。<br />
           タブの部分は ul タグで実装します。
           </p>
-         
           <?php
           // get pages
           $get_posts = get_posts( array( 'post_type'=>'page', 'numberposts'=>-1 ) );
           ?>
           <ui class="sortable-1">
             <?php foreach ($get_posts as $get_post): ?>
-              <li class="sortable-1-item">
+              <li class="sortable-1-item" data-pageslug="<?php echo $get_post->post_name; ?>">
                 <h3 class="sunya-ttl-1"><?php echo $get_post->post_title; ?></h3>
                 <ul class="sortable-2">
                   <?php  if( isset($sunya_options['tpl'][$get_post->post_name]) ): ?>
@@ -54,7 +54,7 @@ function theme_editor_form(){
                       <li class="ui-state-default border-color-red">
                         <label>
                           <?php $checked = $block_val['checked'] ? ' checked="checked"' : ''; ?>
-                          <input type="checkbox" name="sunya_options[tpl][<?php echo $get_post->post_name; ?>][<?php echo $i; ?>]" value="1"<?php echo $checked; ?>><?php echo $block_key; ?>
+                          <input type="checkbox" name="sunya_options[tpl][<?php echo $get_post->post_name; ?>][<?php echo $i; ?>][<?php echo $block_key; ?>]" value="1" data-blockname="<?php echo $block_key; ?>"<?php echo $checked; ?>><?php echo $block_key; ?>
                         </label>
                       </li>
                     <?php $i++; endforeach; ?>
@@ -69,7 +69,7 @@ function theme_editor_form(){
                   <?php $checked = $undefined_val['checked'] ? ' checked="checked"' : ''; ?>
                   <li class="ui-state-default border-color-red">
                     <label>
-                      <input type="checkbox" name="sunya_options[tpl][undefined][<?php echo $i; ?>][<?php echo $undefined_key; ?>]" value="1"<?php echo $checked; ?>><?php echo $undefined_key; ?>
+                      <input type="checkbox" name="sunya_options[tpl][undefined][<?php echo $i; ?>][<?php echo $undefined_key; ?>]" value="1" data-blockname="<?php echo $undefined_key; ?>" <?php echo $checked; ?>><?php echo $undefined_key; ?>
                     </label>
                   </li>
                 <?php $i++; endforeach; ?>
@@ -77,7 +77,6 @@ function theme_editor_form(){
             </li>
           </ui>
           <div style="clear: both;"></div>
-
           <script>
           // http://alphasis.info/2011/06/sortable-2-connectwith/
           jQuery(function($) {
@@ -85,7 +84,17 @@ function theme_editor_form(){
             $( '.sortable-1' ) . sortable();
             $( '.sortable-1' ) . disableSelection();
             $( '.sortable-2' ) . sortable( {
-                connectWith: '.sortable-2'
+                connectWith: '.sortable-2',
+                update: function(event, ui) {
+                  $('.sortable-2').each(function(index, element) {
+                    var thisPageSlug = $(this).parent('li').data('pageslug');
+                    $(this).children('li').each(function(index, element) {
+                      var targetCB = $(this).find("input[type='checkbox']");
+                      var blockName = targetCB.data('blockname');
+                      targetCB.attr('name', 'sunya_options[tpl][' + thisPageSlug + '][' + blockName + '][checked]');
+                    });
+                  })
+                }
             } );
             $( '.sortable-2' ) . disableSelection();
           } );

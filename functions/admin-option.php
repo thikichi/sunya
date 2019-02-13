@@ -6,7 +6,7 @@ function init_update_options() {
   // オプションを設定
 
 
-  delete_option( 'sunya_options' );
+  // delete_option( 'sunya_options' );
 
   $default_options = array(
     'tpl' => array(
@@ -32,9 +32,12 @@ function init_update_options() {
     ),
   );
   $sunya_options = get_option( 'sunya_options', $default_options );
-  if( isset( $sunya_options ) ) {
+  if( isset($_POST['sunya_options']) ) {
+    update_option( 'sunya_options', $_POST['sunya_options'] );
+  } else {
     update_option( 'sunya_options', $sunya_options );
   }
+
   // wp_safe_redirect( admin_url() );
   // exit;
 
