@@ -54,7 +54,8 @@ function theme_editor_form(){
                       <li class="ui-state-default border-color-red">
                         <label>
                           <?php $checked = $block_val['checked'] ? ' checked="checked"' : ''; ?>
-                          <input type="checkbox" name="sunya_options[tpl][<?php echo $get_post->post_name; ?>][<?php echo $i; ?>][<?php echo $block_key; ?>]" value="1" data-blockname="<?php echo $block_key; ?>"<?php echo $checked; ?>><?php echo $block_key; ?>
+                          <input type="checkbox" name="sunya_options[tpl][<?php echo $get_post->post_name; ?>][<?php echo $block_key; ?>][checked]" value="1" data-blockname="<?php echo $block_key; ?>"<?php echo $checked; ?>><?php echo $block_key; ?>
+                          <input type="hidden" name="sunya_options[tpl][<?php echo $get_post->post_name; ?>][<?php echo $block_key; ?>][enable]" value="1">
                         </label>
                       </li>
                     <?php $i++; endforeach; ?>
@@ -91,7 +92,11 @@ function theme_editor_form(){
                     $(this).children('li').each(function(index, element) {
                       var targetCB = $(this).find("input[type='checkbox']");
                       var blockName = targetCB.data('blockname');
-                      targetCB.attr('name', 'sunya_options[tpl][' + thisPageSlug + '][' + blockName + '][checked]');
+                      // targetCB.attr('name', 'sunya_options[tpl][' + thisPageSlug + '][' + blockName + '][checked]');
+                      var tName  = targetCB.attr('name');
+                      var tName2 = tName.replace(/^sunya_options\[tpl\]\[[^\]]+\]/, 'sunya_options[tpl][' + thisPageSlug + ']');
+                      console.log(tName2);
+                      targetCB.attr('name', tName2);
                     });
                   })
                 }

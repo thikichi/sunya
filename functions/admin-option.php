@@ -6,7 +6,7 @@ function init_update_options() {
   // オプションを設定
 
 
-  // delete_option( 'sunya_options' );
+  delete_option( 'sunya_options' );
 
   $default_options = array(
     'tpl' => array(

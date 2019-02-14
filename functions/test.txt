@@ -2,52 +2,77 @@ array(1) {
   ["tpl"]=>
   array(3) {
     ["company"]=>
-    array(4) {
-      ["block-013"]=>
+    array(5) {
+      ["block-001"]=>
       array(1) {
         ["checked"]=>
-        string(1) "1"
+        bool(true)
+      }
+      ["block-002"]=>
+      array(1) {
+        ["checked"]=>
+        bool(false)
+      }
+      ["block-003"]=>
+      array(1) {
+        ["checked"]=>
+        bool(false)
       }
       ["block-004"]=>
       array(1) {
         ["checked"]=>
-        string(1) "1"
-      }
-      ["block-001"]=>
-      array(1) {
-        ["checked"]=>
-        string(1) "1"
+        bool(false)
       }
       ["block-005"]=>
       array(1) {
         ["checked"]=>
-        string(1) "1"
+        bool(true)
       }
     }
     ["testpost"]=>
-    array(2) {
+    array(3) {
       ["block-006"]=>
       array(1) {
         ["checked"]=>
-        string(1) "1"
+        bool(true)
+      }
+      ["block-007"]=>
+      array(1) {
+        ["checked"]=>
+        bool(false)
       }
       ["block-008"]=>
       array(1) {
         ["checked"]=>
-        string(1) "1"
+        bool(true)
       }
     }
     ["undefined"]=>
-    array(2) {
+    array(5) {
       ["block-010"]=>
       array(1) {
         ["checked"]=>
-        string(1) "1"
+        bool(true)
       }
       ["block-011"]=>
       array(1) {
         ["checked"]=>
-        string(1) "1"
+        bool(true)
+      }
+      ["block-012"]=>
+      array(1) {
+        ["checked"]=>
+        bool(false)
+      }
+      ["block-013"]=>
+      array(1) {
+        ["checked"]=>
+        bool(true)
+      }
+      ["block-014"]=>
+      array(1) {
+        ["checked"]=>
+        bool(false)
       }
     }
   }
