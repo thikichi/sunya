@@ -59,21 +59,24 @@ function theme_editor_form(){
                         </label>
                       </li>
                     <?php $i++; endforeach; ?>
+                  <?php  else: ?>
+                    <li class="ui-state-default border-color-red"></li>
                   <?php  endif; ?>
                 </ul>
               </li>
             <?php endforeach; ?>
-            <li class="sortable-1-item">
+            <li class="sortable-1-item" data-pageslug="undefined">
               <h3 class="sunya-ttl-1">未使用ブロック</h3>
               <ul class="sortable-2">
-                <?php $i=0; foreach ($sunya_options['tpl']['undefined'] as $undefined_key => $undefined_val): ?>
+                <?php foreach ($sunya_options['tpl']['undefined'] as $undefined_key => $undefined_val): ?>
                   <?php $checked = $undefined_val['checked'] ? ' checked="checked"' : ''; ?>
                   <li class="ui-state-default border-color-red">
                     <label>
-                      <input type="checkbox" name="sunya_options[tpl][undefined][<?php echo $i; ?>][<?php echo $undefined_key; ?>]" value="1" data-blockname="<?php echo $undefined_key; ?>" <?php echo $checked; ?>><?php echo $undefined_key; ?>
+                      <input type="checkbox" name="sunya_options[tpl][undefined][<?php echo $undefined_key; ?>][checked]" value="1" data-blockname="<?php echo $undefined_key; ?>" <?php echo $checked; ?>><?php echo $undefined_key; ?>
+                      <input type="hidden" name="sunya_options[tpl][undefined][<?php echo $undefined_key; ?>][enable]" value="1">
                     </label>
                   </li>
-                <?php $i++; endforeach; ?>
+                <?php endforeach; ?>
               </ul>
             </li>
           </ui>
@@ -90,13 +93,13 @@ function theme_editor_form(){
                   $('.sortable-2').each(function(index, element) {
                     var thisPageSlug = $(this).parent('li').data('pageslug');
                     $(this).children('li').each(function(index, element) {
-                      var targetCB = $(this).find("input[type='checkbox']");
-                      var blockName = targetCB.data('blockname');
-                      // targetCB.attr('name', 'sunya_options[tpl][' + thisPageSlug + '][' + blockName + '][checked]');
-                      var tName  = targetCB.attr('name');
-                      var tName2 = tName.replace(/^sunya_options\[tpl\]\[[^\]]+\]/, 'sunya_options[tpl][' + thisPageSlug + ']');
-                      console.log(tName2);
-                      targetCB.attr('name', tName2);
+                      var targetCB = $(this).find("input");
+                      if( targetCB.length ) {
+                        var blockName = targetCB.data('blockname');
+                        var tName  = targetCB.attr('name');
+                        var tName2 = tName.replace(/^sunya_options\[tpl\]\[[^\]]+\]/, 'sunya_options[tpl][' + thisPageSlug + ']');
+                        targetCB.attr('name', tName2);
+                      }
                     });
                   })
                 }

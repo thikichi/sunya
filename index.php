@@ -2,12 +2,16 @@
 
 <?php
 $options = get_option( 'sunya_options' );
+// var_dump($options);
 ?>
 
 <?php
-$tpl_arr = $options['tpls'];
-foreach ($tpl_arr as $tpl) {
-  get_template_part('component/block', $tpl);
+foreach ($options['tpl'] as $page_slug => $page_slug_vals) {
+  if( is_page( $page_slug ) ) {
+    foreach ($page_slug_vals as $block_name => $block_vals) {
+      get_template_part('component/' . $block_name);
+    }
+  }
 }
 ?>
 
