@@ -10,19 +10,15 @@ function init_update_options() {
 
   $default_options = array(
     'tpl' => array(
-      'company' => array(
+      'undefined' => array(
         'block-001' => array('checked'=>true),
         'block-002' => array('checked'=>false),
         'block-003' => array('checked'=>false),
         'block-004' => array('checked'=>false),
         'block-005' => array('checked'=>true),
-      ),
-      'testpost' => array(
         'block-006' => array('checked'=>true),
         'block-007' => array('checked'=>false),
         'block-008' => array('checked'=>true),
-      ),
-      'undefined' => array(
         'block-010' => array('checked'=>true),
         'block-011' => array('checked'=>true),
         'block-012' => array('checked'=>false),

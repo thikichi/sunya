@@ -10,7 +10,7 @@ function theme_editor_form(){
 
   <?php
   $sunya_options = get_option( 'sunya_options' );
-  var_dump($sunya_options);
+  // var_dump($sunya_options);
   ?>
 
   <div class="wrap">
@@ -46,16 +46,16 @@ function theme_editor_form(){
           ?>
           <ui class="sortable-1">
             <?php foreach ($get_posts as $get_post): ?>
-              <li class="sortable-1-item" data-pageslug="<?php echo $get_post->post_name; ?>">
+              <li class="sortable-1-item" data-pageslug="<?php echo $get_post->ID; ?>">
                 <h3 class="sunya-ttl-1"><?php echo $get_post->post_title; ?></h3>
                 <ul class="sortable-2">
-                  <?php  if( isset($sunya_options['tpl'][$get_post->post_name]) ): ?>
-                    <?php $i=0; foreach ($sunya_options['tpl'][$get_post->post_name] as $block_key => $block_val): ?>
+                  <?php  if( isset($sunya_options['tpl'][$get_post->ID]) ): ?>
+                    <?php $i=0; foreach ($sunya_options['tpl'][$get_post->ID] as $block_key => $block_val): ?>
                       <li class="ui-state-default border-color-red">
                         <label>
                           <?php $checked = $block_val['checked'] ? ' checked="checked"' : ''; ?>
-                          <input type="checkbox" name="sunya_options[tpl][<?php echo $get_post->post_name; ?>][<?php echo $block_key; ?>][checked]" value="1" data-blockname="<?php echo $block_key; ?>"<?php echo $checked; ?>><?php echo $block_key; ?>
-                          <input type="hidden" name="sunya_options[tpl][<?php echo $get_post->post_name; ?>][<?php echo $block_key; ?>][enable]" value="1">
+                          <input type="checkbox" name="sunya_options[tpl][<?php echo $get_post->ID; ?>][<?php echo $block_key; ?>][checked]" value="1" data-blockname="<?php echo $block_key; ?>"<?php echo $checked; ?>><?php echo $block_key; ?>
+                          <input type="hidden" name="sunya_options[tpl][<?php echo $get_post->ID; ?>][<?php echo $block_key; ?>][enable]" value="1">
                         </label>
                       </li>
                     <?php $i++; endforeach; ?>

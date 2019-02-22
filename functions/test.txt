@@ -1,14 +1,9 @@
 array(1) {
   ["tpl"]=>
-  array(4) {
-    ["company"]=>
-    array(5) {
-      ["block-008"]=>
-      array(1) {
-        ["checked"]=>
-        string(1) "1"
-      }
-      ["block-007"]=>
+  array(3) {
+    [9]=>
+    array(2) {
+      ["block-005"]=>
       array(1) {
         ["checked"]=>
         string(1) "1"
@@ -18,20 +13,23 @@ array(1) {
         ["checked"]=>
         string(1) "1"
       }
-      ["block-002"]=>
+    }
+    [5]=>
+    array(2) {
+      ["block-006"]=>
       array(1) {
         ["checked"]=>
         string(1) "1"
       }
-      ["block-005"]=>
+      ["block-003"]=>
       array(1) {
         ["checked"]=>
         string(1) "1"
       }
     }
-    ["testpost"]=>
-    array(2) {
-      ["block-003"]=>
+    ["undefined"]=>
+    array(9) {
+      ["block-002"]=>
       array(1) {
         ["checked"]=>
         string(1) "1"
@@ -41,17 +39,16 @@ array(1) {
         ["checked"]=>
         string(1) "1"
       }
-    }
-    ["sample-page"]=>
-    array(1) {
-      ["block-006"]=>
+      ["block-007"]=>
       array(1) {
         ["checked"]=>
         string(1) "1"
       }
-    }
-    ["undefined"]=>
-    array(5) {
+      ["block-008"]=>
+      array(1) {
+        ["checked"]=>
+        string(1) "1"
+      }
       ["block-010"]=>
       array(1) {
         ["checked"]=>
