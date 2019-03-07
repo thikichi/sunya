@@ -1,79 +1,121 @@
-array(1) {
+array(2) {
   ["tpl"]=>
   array(3) {
     [9]=>
     array(2) {
       ["block-005"]=>
-      array(1) {
+      array(2) {
         ["checked"]=>
+        string(1) "1"
+        ["enable"]=>
         string(1) "1"
       }
       ["block-001"]=>
-      array(1) {
+      array(2) {
         ["checked"]=>
+        string(1) "1"
+        ["enable"]=>
         string(1) "1"
       }
     }
     [5]=>
     array(2) {
       ["block-006"]=>
-      array(1) {
+      array(2) {
         ["checked"]=>
+        string(1) "1"
+        ["enable"]=>
         string(1) "1"
       }
       ["block-003"]=>
-      array(1) {
+      array(2) {
         ["checked"]=>
+        string(1) "1"
+        ["enable"]=>
         string(1) "1"
       }
     }
     ["undefined"]=>
     array(9) {
       ["block-002"]=>
-      array(1) {
+      array(2) {
         ["checked"]=>
+        string(1) "1"
+        ["enable"]=>
         string(1) "1"
       }
       ["block-004"]=>
-      array(1) {
+      array(2) {
         ["checked"]=>
+        string(1) "1"
+        ["enable"]=>
         string(1) "1"
       }
       ["block-007"]=>
-      array(1) {
+      array(2) {
         ["checked"]=>
+        string(1) "1"
+        ["enable"]=>
         string(1) "1"
       }
       ["block-008"]=>
-      array(1) {
+      array(2) {
         ["checked"]=>
+        string(1) "1"
+        ["enable"]=>
         string(1) "1"
       }
       ["block-010"]=>
-      array(1) {
+      array(2) {
         ["checked"]=>
+        string(1) "1"
+        ["enable"]=>
         string(1) "1"
       }
       ["block-011"]=>
-      array(1) {
+      array(2) {
         ["checked"]=>
+        string(1) "1"
+        ["enable"]=>
         string(1) "1"
       }
       ["block-012"]=>
-      array(1) {
+      array(2) {
         ["checked"]=>
+        string(1) "1"
+        ["enable"]=>
         string(1) "1"
       }
       ["block-013"]=>
-      array(1) {
+      array(2) {
         ["checked"]=>
+        string(1) "1"
+        ["enable"]=>
         string(1) "1"
       }
       ["block-014"]=>
-      array(1) {
+      array(2) {
         ["checked"]=>
         string(1) "1"
+        ["enable"]=>
+        string(1) "1"
       }
+    }
+  }
+  ["info"]=>
+  array(1) {
+    ["master"]=>
+    array(5) {
+      ["company_name"]=>
+      string(6) "会社"
+      ["postcode"]=>
+      string(0) ""
+      ["address"]=>
+      string(0) ""
+      ["tel"]=>
+      string(0) ""
+      ["fax"]=>
+      string(0) ""
     }
   }
 }
