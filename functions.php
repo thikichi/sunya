@@ -13,10 +13,11 @@ require_once locate_template('functions/admin-editor-form.php');
 // オプション取得・設定
 require_once locate_template('functions/admin-option.php');
 // カスタム投稿
-require_once locate_template('functions/custom-post-type.php');
+require_once locate_template('functions/function-custom-post-type.php');
 // カスタムフィールド
 require_once locate_template('functions/custom-field-metabox.php');
-
+// アクションフック
+require_once locate_template('functions/action-hook.php');
 
 //アイキャッチ画像
 add_theme_support( 'post-thumbnails' );

@@ -1,7 +1,7 @@
 <?php
 function create_post_type() {
 
-  $sunya_options = get_option( 'sunya_options' );
+  global $sunya_options;
 
   // add custom post type
   $cp_supports = array(
@@ -33,4 +33,3 @@ function create_post_type() {
     )
   );
 }
-add_action( 'init', 'create_post_type' ); // アクションに上記関数をフックします

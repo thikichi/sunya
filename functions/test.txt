@@ -1,4 +1,4 @@
-array(2) {
+array(3) {
   ["tpl"]=>
   array(3) {
     [9]=>
@@ -98,6 +98,27 @@ array(2) {
         ["checked"]=>
         string(1) "1"
         ["enable"]=>
+        string(1) "1"
+      }
+    }
+  }
+  ["cpt"]=>
+  array(1) {
+    ["news"]=>
+    array(4) {
+      ["disp"]=>
+      string(1) "0"
+      ["label"]=>
+      string(15) "トピックス"
+      ["slug"]=>
+      string(4) "eeee"
+      ["supports"]=>
+      array(3) {
+        ["title"]=>
+        string(1) "1"
+        ["thumbnail"]=>
+        string(1) "1"
+        ["revisions"]=>
         string(1) "1"
       }
     }
