@@ -4,8 +4,6 @@
 */
 function init_update_options() {
   // オプションを設定
-
-
   // delete_option( 'sunya_options' );
 
   $default_options = array(
@@ -34,14 +32,18 @@ function init_update_options() {
     update_option( 'sunya_options', $sunya_options );
   }
 
-  // wp_safe_redirect( admin_url() );
-  // exit;
 
-  ob_start();
-  var_dump( $sunya_options );
-  $out = ob_get_contents();
-  ob_end_clean();
-  file_put_contents(dirname(__FILE__) . '/test.txt', $out);
+  // if(isset($_POST['my-option']) && $_POST['my-option']) {
+  //   if(check_admin_referer('my-nonce-key', 'my-option')) {
+  //     // 実際の保存処理
+  //     if(isset($_POST['sunya_options']) && $_POST['sunya_options']) {
+  //       update_option('sunya_options', $_POST['sunya_options']);
+  //     } else {
+  //       update_option('sunya_options', '');
+  //     }
+  //     wp_safe_redirect(menu_page_url('theme_settings', false));
+  //   }
+  // }
 
   // オプションを取得
   // if( $sunya_options = get_option( 'sunya_options' ) ) {
