@@ -16,7 +16,7 @@ function theme_editor_form(){
   <div class="wrap">
     <h2>テーマ設定</h2>
     <form id="my-option-form" method="post" action="">
-      <?php // wp_nonce_field('my-nonce-key', 'my-option'); ?>
+      <?php wp_nonce_field('my-nonce-key', 'my-option'); ?>
       <!-- Tabs -->
       <?php
       /*
