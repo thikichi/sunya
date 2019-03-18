@@ -9,8 +9,8 @@ function theme_editor_form(){
   ?>
 
   <?php
-  $sunya_options = get_option( 'sunya_options' );
-  // var_dump($sunya_options);
+  global $sunya_options;
+  global $option_defaults;
   ?>
 
   <div class="wrap">

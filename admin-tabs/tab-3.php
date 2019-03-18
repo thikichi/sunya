@@ -16,6 +16,7 @@ if( isset($sunya_options['cpt']['news']['supports'])) {
     $news['supports'][] = $suffix;
   }
 }
+var_dump($option_defaults);
 ?>
 
 <div id="Tab3Child">
@@ -52,6 +53,7 @@ if( isset($sunya_options['cpt']['news']['supports'])) {
     <p class="admintab-descrip">新着情報でサポートする属性（タイトルやアイキャッチ画像などの部品）を選択・表示することができます。</p>
     <div class="admintab-formparts-wrapper">
       <?php
+      // $supports = $option_defaults['cpt']['news']['supports'];
       $supports = array(
         'title' => 'タイトル',
         'editor' => 'エディター',
