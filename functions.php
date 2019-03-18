@@ -1,4 +1,15 @@
 <?php
+$option_defaults = array(
+  'cpt' => array(
+    'news' => array(
+      'label' => '新着情報',
+      'slug'  => 'news',
+      'disp'  => '0',
+    )
+  ),
+);
+
+
 // カスタムフィールドを自由に作成できるクラスライブラリを利用
 function cmb_initialize_cmb_meta_boxes() {
   if(!class_exists('cmb_Meta_Box')) require_once dirname(__FILE__) . '/' . 'lib/metabox/init.php';

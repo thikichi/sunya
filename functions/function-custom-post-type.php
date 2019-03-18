@@ -1,8 +1,13 @@
 <?php
 function create_post_type() {
 
+  global $option_defaults;
   global $sunya_options;
-  $news['disp'] = $sunya_options['cpt']['news']['disp'];
+
+  $temp_arr = $option_defaults['cpt']['news'];
+  foreach ($temp_arr as $key => $default) {
+    $news[$key] = isset($sunya_options['cpt']['news'][$key]) && $sunya_options['cpt']['news'][$key]!='' ? $sunya_options['cpt']['news'][$key] : $default;
+  }
 
   // add custom post type
   if( $news['disp']==='1' ) {
@@ -12,9 +17,9 @@ function create_post_type() {
       'thumbnail',  // アイキャッチ画像
       'revisions'  // リビジョン
     );
-    register_post_type( 'news',  // カスタム投稿名
+    register_post_type( $news['slug'],  // カスタム投稿名
       array(
-        'label' => '新着情報',
+        'label'  => $news['label'],
         'public' => true,
         'has_archive' => true,
         'menu_position' => 5,  // 管理画面上でどこに配置するか
