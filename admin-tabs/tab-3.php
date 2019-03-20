@@ -3,20 +3,18 @@
 <p>投稿と新着情報の設定を行います。</p>
 
 <?php 
-// var_dump($sunya_options);
-$temp_arr = array('label','disp','slug');
+$temp_arr = array('label','disp','slug','supports');
 $news = array();
 foreach ($temp_arr as $suffix) {
   $news[$suffix] = isset($sunya_options['cpt']['news'][$suffix]) ? $sunya_options['cpt']['news'][$suffix] : '';
 }
-
+var_dump($sunya_options);
 // サポートする属性
-if( isset($sunya_options['cpt']['news']['supports'])) {
-  foreach ($sunya_options['cpt']['news']['supports'] as $suffix => $val) {
-    $news['supports'][] = $suffix;
-  }
-}
-var_dump($option_defaults);
+// if( isset($sunya_options['cpt']['news']['supports'])) {
+//   foreach ($sunya_options['cpt']['news']['supports'] as $suffix => $val) {
+//     $news['supports'][] = $suffix;
+//   }
+// }
 ?>
 
 <div id="Tab3Child">
@@ -53,20 +51,19 @@ var_dump($option_defaults);
     <p class="admintab-descrip">新着情報でサポートする属性（タイトルやアイキャッチ画像などの部品）を選択・表示することができます。</p>
     <div class="admintab-formparts-wrapper">
       <?php
-      // $supports = $option_defaults['cpt']['news']['supports'];
-      $supports = array(
-        'title' => 'タイトル',
-        'editor' => 'エディター',
-        'thumbnail' => 'アイキャッチ画像',
-        'revisions' => 'リビジョン',
-      );
+      // デフォルト値
+      $supports = $option_defaults['cpt']['news']['supports'];
       ?>
       <?php
-      foreach ($supports as $suffix => $label) {
-        $checked = in_array($suffix, $news['supports']) ? ' checked' : '';
+      foreach ($supports as $item) {
+        if( $news['supports'] ) {
+          $checked = in_array($item['name'], $news['supports']) ? ' checked' : '';
+        } else {
+          $checked = $item['checked'] ? ' checked' : '';
+        }
         echo '<label>';
-        echo '<input type="checkbox" name="sunya_options[cpt][news][supports][' . esc_attr($suffix) . ']" value="1"' . $checked . '>';
-        echo esc_html($label);
+        echo '<input type="checkbox" name="sunya_options[cpt][news][supports][]" value="' . $item['name'] . '"' . $checked . '>';
+        echo esc_html($item['label']);
         echo '</label>';
       }
       ?>

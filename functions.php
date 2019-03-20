@@ -6,14 +6,27 @@ $option_defaults = array(
       'slug'  => 'news',
       'disp'  => '0',
       'supports' => array(
-        'title'     => array( 'label'=>'タイトル', 'checked'=>true ),
-        'editor'    => array( 'label'=>'エディター', 'checked'=>true ),
-        'thumbnail' => array( 'label'=>'アイキャッチ画像', 'checked'=>true ),
-        'revisions' => array( 'label'=>'リビジョン', 'checked'=>false ),
+        array( 'name'=>'title', 'label'=>'タイトル', 'checked'=>true ),
+        array( 'name'=>'editor', 'label'=>'エディター', 'checked'=>true ),
+        array( 'name'=>'thumbnail', 'label'=>'アイキャッチ画像', 'checked'=>true ),
+        array( 'name'=>'revisions', 'label'=>'リビジョン', 'checked'=>false ),
       ),
     )
   ),
 );
+
+// $init_option_values = array(
+//   'cpt' => array(
+//     'news' => array(
+//       'label' => '新着情報',
+//       'slug'  => 'news',
+//       'disp'  => '0',
+//       'supports' => array(
+//         'title','topics'
+//       ),
+//     )
+//   ),
+// );
 
 
 // カスタムフィールドを自由に作成できるクラスライブラリを利用
