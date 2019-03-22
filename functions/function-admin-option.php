@@ -27,7 +27,14 @@ function init_update_options() {
   //   ),
   // );
   // $sunya_options = get_option( 'sunya_options', $default_options );
-  
+
+ob_start();
+var_dump($_POST['sunya_options']);
+$out = ob_get_contents();
+ob_end_clean();
+file_put_contents(dirname(__FILE__) . '/test.txt', $out);
+
+
   if(isset($_POST['my-option']) && $_POST['my-option']) {
     if(check_admin_referer('my-nonce-key', 'my-option')) {
       // 実際の保存処理

@@ -1,6 +1,4 @@
 <?php
-$sunya_options = get_option( 'sunya_options' );
-
 /*
  * init
 */

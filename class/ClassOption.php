@@ -2,44 +2,25 @@
 /*
 * 管理画面タブコンテンツ
 */
-class OsFmBase {
+class ClassOption {
 
 	protected $option;
 	protected $option_name = 'sunya_options';
-	protected $contents;
-	protected $contents_name;
-	protected $theme_dir;
-	protected $theme_uri;
-	protected $dir;
-	protected $op_replace_txt;
 	protected $nonce_action     = 'my-nonce-key';
 	protected $nonce_field_name = 'my-option';
 
 	function __construct() {
-
-		// プラグインのパス テーマ
-		$this->set_option_value();
-		$this->dir = get_template_directory_uri() . '/functions/os-framework-manager/';
-		// テーマのディレクトリ
-		$this->theme_dir = get_stylesheet_directory() . '/';
-		$this->theme_uri = get_stylesheet_directory_uri() . '/';
-	}
-
-	public function set_option_value() {
-		// オプション値を取得
-		$this->option = get_option($this->option_name);
-		// オプション値のなかのコンテンツ部分を取得
-		$this->contents = $this->option['contents'];
+		$this->option = get_option( $this->option_name );
 	}
 
 	/*
-	 * コンテンツを取得
+	 * オプションを取得
 	*/
-	public function get_content($name='') {
-		if(isset($name) && $name){
-			return $this->contents[$name];
+	public function get_option( $name='' ) {
+		if( $name!='' ){
+			return get_option( $name );
 		} else {
-			return $this->contents;
+			return get_option( $this->option );
 		}
 	}
 

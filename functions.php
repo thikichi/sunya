@@ -1,4 +1,17 @@
 <?php
+
+// クラスファイル
+require_once locate_template('class/ClassOption.php');
+
+$option = new ClassOption();
+$sunya_options = $option->get_option();
+
+ob_start();
+var_dump($sunya_options);
+$out = ob_get_contents();
+ob_end_clean();
+file_put_contents(dirname(__FILE__) . '/test.txt', $out);
+
 $option_defaults = array(
   'cpt' => array(
     'news' => array(
@@ -35,6 +48,9 @@ function cmb_initialize_cmb_meta_boxes() {
 }
 add_action('init', 'cmb_initialize_cmb_meta_boxes', 9999);
 // 管理画面への各種スクリプトの読み込み
+
+
+
 require_once locate_template('functions/admin-enqueue-scripts.php');
 // テーマ設定・操作画面
 require_once locate_template('functions/function-theme-editor-form.php');

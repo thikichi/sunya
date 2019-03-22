@@ -8,7 +8,6 @@ $news = array();
 foreach ($temp_arr as $suffix) {
   $news[$suffix] = isset($sunya_options['cpt']['news'][$suffix]) ? $sunya_options['cpt']['news'][$suffix] : '';
 }
-var_dump($sunya_options);
 // サポートする属性
 // if( isset($sunya_options['cpt']['news']['supports'])) {
 //   foreach ($sunya_options['cpt']['news']['supports'] as $suffix => $val) {

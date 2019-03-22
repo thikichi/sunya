@@ -32,16 +32,16 @@ function theme_editor_form(){
           <li><a href="#tabs-4">マスター情報</a></li>
         </ul>
         <div id="tabs-1">
-          <?php require_once dirname(dirname(__FILE__)) . '/admin-tabs/tab-1.php'; ?>
+          <?php // require_once dirname(dirname(__FILE__)) . '/admin-tabs/tab-1.php'; ?>
         </div>
         <div id="tabs-2">
-          <?php require_once dirname(dirname(__FILE__)) . '/admin-tabs/tab-2.php'; ?>
+          <?php // require_once dirname(dirname(__FILE__)) . '/admin-tabs/tab-2.php'; ?>
         </div>
         <div id="tabs-3">
           <?php require_once dirname(dirname(__FILE__)) . '/admin-tabs/tab-3.php'; ?>
         </div>
         <div id="tabs-4">
-          <?php require_once dirname(dirname(__FILE__)) . '/admin-tabs/tab-4.php'; ?>
+          <?php // require_once dirname(dirname(__FILE__)) . '/admin-tabs/tab-4.php'; ?>
         </div>
       </div>
       <p>
