@@ -10,7 +10,6 @@ function theme_editor_form(){
 
   <?php
   global $sunya_options;
-  global $option_defaults;
   ?>
 
   <div class="wrap">

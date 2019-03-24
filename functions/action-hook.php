@@ -6,7 +6,7 @@ function init_sunya_function() {
 
   global $sunya_options;
   // 新着情報を実装
-  create_post_type();
+  // create_post_type();
 
 
 }
@@ -31,7 +31,7 @@ function admin_init_sunya_function() {
 
   global $sunya_options;
   // オプションを保存
-  init_update_options();
+  // init_update_options();
 
 }
 add_action( 'admin_init', 'admin_init_sunya_function' );
