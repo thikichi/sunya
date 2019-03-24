@@ -28,6 +28,6 @@ function sunya_admin_enqueue_scripts() {
   // メディアアップローダの javascript API
   wp_enqueue_media();
   // 管理画面の共通CSS
-  wp_enqueue_style( 'my_admin_style', get_template_directory_uri() . '/css/my-admin-style.css', array(), '1.0' );
+  wp_enqueue_style( 'my_admin_style', get_template_directory_uri() . '/css/my-admin-style.css', array(), '1.1' );
 }
 add_action( 'admin_enqueue_scripts', 'sunya_admin_enqueue_scripts' );

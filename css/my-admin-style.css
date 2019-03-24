@@ -7,3 +7,15 @@
   margin-bottom: 0 !important;
   min-height: 50px !important;
 }*/
+/*
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border: 1px solid #c5dbec;
+    background: #dfeffc url(images/ui-bg_glass_85_dfeffc_1x400.png) 50% 50% repeat-x;
+  font-weight: bold;
+  color: #333 !important;
+}*/
+
+.ui-sortable > li {
+  padding: 7px 0;
+  margin: 0;
+}
