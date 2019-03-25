@@ -8,20 +8,24 @@ class ClassOption {
 	protected $option_name = 'sunya_options';
 	protected $nonce_action     = 'my-nonce-key';
 	protected $nonce_field_name = 'my-option';
+	protected $init_value;
 
 	function __construct() {
 		$this->option = get_option( $this->option_name );
 	}
 
 	/*
+	 * 初期値の設定
+	*/
+	public function set_option( $init_value ) {
+		return $this->init_value = $init_value;
+	}
+
+	/*
 	 * オプションを取得
 	*/
-	public function get_option( $name='' ) {
-		if( $name!='' ){
-			return get_option( $name );
-		} else {
-			return get_option( $this->option );
-		}
+	public function get_option() {
+		return $this->option;
 	}
 
 	/*
@@ -40,6 +44,13 @@ class ClassOption {
 				wp_safe_redirect(menu_page_url('theme_settings', false));
 			}
 		}
+	}
+
+	/*
+	 * オプションの破棄
+	*/
+	public function delete_options() {
+		delete_option( $this->option_name );
 	}
 }
 ?>

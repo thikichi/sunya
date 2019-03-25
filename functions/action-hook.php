@@ -17,7 +17,7 @@ add_action( 'init', 'init_sunya_function' );
 */
 function admin_menu_sunya_function() {
 
-  global $sunya_options;
+  // global $sunya_options;
   // 管理画面のナビゲーション
   add_menu_page( 'フレーム設定', 'フレーム設定', 'administrator', 'theme_settings', 'theme_editor_form','', 6 );
 
@@ -29,9 +29,8 @@ add_action('admin_menu', 'admin_menu_sunya_function');
 */
 function admin_init_sunya_function() {
 
-  global $sunya_options;
   // オプションを保存
-  // init_update_options();
+  update_options();
 
 }
 add_action( 'admin_init', 'admin_init_sunya_function' );

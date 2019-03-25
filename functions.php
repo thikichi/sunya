@@ -41,12 +41,23 @@ $sunya_options = $option->get_option();
 //   ),
 // );
 
+// sunya_options[cpt][news][label]
+$init_value = array(
+  'cpt' => array(
+    'news' => array(
+      'label' => '新着情報',
+      'slug'  => 'news',
+    )
+  )
+);
+$option->set_option( $init_value );
+
 
 // カスタムフィールドを自由に作成できるクラスライブラリを利用
-function cmb_initialize_cmb_meta_boxes() {
-  if(!class_exists('cmb_Meta_Box')) require_once dirname(__FILE__) . '/' . 'lib/metabox/init.php';
-}
-add_action('init', 'cmb_initialize_cmb_meta_boxes', 9999);
+// function cmb_initialize_cmb_meta_boxes() {
+//   if(!class_exists('cmb_Meta_Box')) require_once dirname(__FILE__) . '/' . 'lib/metabox/init.php';
+// }
+// add_action('init', 'cmb_initialize_cmb_meta_boxes', 9999);
 // 管理画面への各種スクリプトの読み込み
 
 
@@ -55,7 +66,7 @@ require_once locate_template('functions/admin-enqueue-scripts.php');
 // テーマ設定・操作画面
 require_once locate_template('functions/function-theme-editor-form.php');
 // オプション取得・設定
-// require_once locate_template('functions/function-admin-option.php');
+require_once locate_template('functions/update_options.php');
 // カスタム投稿
 // require_once locate_template('functions/function-custom-post-type.php');
 // カスタムフィールド
