@@ -3,11 +3,16 @@
 <p>投稿と新着情報の設定を行います。</p>
 
 <?php 
-$temp_arr = array('label','disp','slug','supports');
-$news = array();
-foreach ($temp_arr as $suffix) {
-  $news[$suffix] = isset($sunya_options['cpt']['news'][$suffix]) ? $sunya_options['cpt']['news'][$suffix] : '';
-}
+
+// $temp_arr = array('label','disp','slug','supports');
+// $news = array();
+// foreach ($temp_arr as $suffix) {
+//   $news[$suffix] = isset($sunya_options['cpt']['news'][$suffix]) ? $sunya_options['cpt']['news'][$suffix] : '';
+// }
+
+$supports = $sunya_options['cpt']['news']['supports'];
+var_dump($supports);
+
 // サポートする属性
 // if( isset($sunya_options['cpt']['news']['supports'])) {
 //   foreach ($sunya_options['cpt']['news']['supports'] as $suffix => $val) {
@@ -50,19 +55,10 @@ foreach ($temp_arr as $suffix) {
     <p class="admintab-descrip">新着情報でサポートする属性（タイトルやアイキャッチ画像などの部品）を選択・表示することができます。</p>
     <div class="admintab-formparts-wrapper">
       <?php
-      // デフォルト値
-      $supports = $option_defaults['cpt']['news']['supports'];
-      ?>
-      <?php
-      foreach ($supports as $item) {
-        if( $news['supports'] ) {
-          $checked = in_array($item['name'], $news['supports']) ? ' checked' : '';
-        } else {
-          $checked = $item['checked'] ? ' checked' : '';
-        }
+      foreach ($supports as $item_key => $item_val) {
         echo '<label>';
-        echo '<input type="checkbox" name="sunya_options[cpt][news][supports][]" value="' . $item['name'] . '"' . $checked . '>';
-        echo esc_html($item['label']);
+        echo '<input type="checkbox" name="sunya_options[cpt][news][supports][' . $item_key . ']" value="' . $item_val . '"' . $checked . '>';
+        echo esc_html($item_key);
         echo '</label>';
       }
       ?>

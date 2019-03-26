@@ -28,6 +28,12 @@ class ClassOption {
 		return $this->option;
 	}
 
+	public function init_option() {
+		if( !$this->option && isset($this->init_value) ) {
+			update_option( $this->option_name, $this->init_value );
+		}
+	}
+
 	/*
 	 * オプションの保存
 	*/

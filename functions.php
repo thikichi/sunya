@@ -4,7 +4,26 @@
 require_once locate_template('class/ClassOption.php');
 
 $option = new ClassOption();
+// $option->delete_options(); // option削除
+$init_value = array(
+  'cpt' => array(
+    'news' => array(
+      'label' => '新着情報',
+      'slug'  => 'news',
+      'supports' => array(
+        'title'     => '1', // 記事タイトル
+        'editor'    => '1', // 記事本文
+        'thumbnail' => '1', // アイキャッチ画像
+        'revisions' => '0', // リビジョン
+      ),
+    ),
+  )
+);
+$option->set_option( $init_value );
+$option->init_option();
+
 $sunya_options = $option->get_option();
+
 
 // ob_start();
 // var_dump($sunya_options);
@@ -40,17 +59,8 @@ $sunya_options = $option->get_option();
 //     )
 //   ),
 // );
-
+// $option->delete_options();
 // sunya_options[cpt][news][label]
-$init_value = array(
-  'cpt' => array(
-    'news' => array(
-      'label' => '新着情報',
-      'slug'  => 'news',
-    )
-  )
-);
-$option->set_option( $init_value );
 
 
 // カスタムフィールドを自由に作成できるクラスライブラリを利用
