@@ -24,6 +24,23 @@ $option->init_option();
 
 $sunya_options = $option->get_option();
 
+$form_element = array(
+  'cpt' => array(
+    'news' => array(
+      'label' => array('type'=>'text','init'=>'新着情報'),
+      'slug'  => array('type'=>'text','init'=>'news'),
+      'supports' => array(
+        'type' => 'checkbox',
+        'items' => array( 
+          array('label'=>'タイトル','slug'=>'title','init'=>1),
+          array('label'=>'タイトル','slug'=>'editor','init'=>1),
+          array('label'=>'タイトル','slug'=>'thumbnail','init'=>1),
+          array('label'=>'タイトル','slug'=>'revisions','init'=>0),
+      )
+    ),
+  )
+);
+
 
 // ob_start();
 // var_dump($sunya_options);
