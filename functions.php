@@ -10,36 +10,47 @@ $init_value = array(
     'news' => array(
       'label' => '新着情報',
       'slug'  => 'news',
-      'supports' => array(
-        'title'     => '1', // 記事タイトル
-        'editor'    => '1', // 記事本文
-        'thumbnail' => '1', // アイキャッチ画像
-        'revisions' => '0', // リビジョン
-      ),
+      'supports' => array('title','editor','thumbnail','revisions'),
     ),
   )
 );
+
+$init_value_temp = array();
+$form_element = array(
+  'cpt' => array(
+    'news' => array(
+      'label' => array('type'=>'text','items'=>array('label'=>'タイトル','name'=>'label','value'=>'新着情報')),
+      'slug'  => array('type'=>'text','items'=>array('label'=>'スラッグ','name'=>'slug','value'=>'news')),
+      'supports' => array(
+        'type'   => 'checkbox',
+        'items'  => array( 
+          array('label'=>'タイトル','name'=>'title','value'=>1),
+          array('label'=>'タイトル','name'=>'editor','value'=>1),
+          array('label'=>'タイトル','name'=>'thumbnail','value'=>1),
+          array('label'=>'タイトル','name'=>'revisions','value'=>0),
+        ),
+      ),
+    ),
+  ),
+);
+
+foreach ($form_element['cpt']['news'] as $key => $value) {
+  if( is_array($value) ) {
+    foreach ($value as $key2 => $value2) {
+      $init_value_temp['cpt']['news'][$key][] = $value2['value'];
+    }
+  } else {
+    $init_value_temp['cpt']['news'][$key] = $value['items'][0]['value'];
+  }
+}
+var_dump($init_value_temp);
+
 $option->set_option( $init_value );
 $option->init_option();
 
 $sunya_options = $option->get_option();
 
-$form_element = array(
-  'cpt' => array(
-    'news' => array(
-      'label' => array('type'=>'text','init'=>'新着情報'),
-      'slug'  => array('type'=>'text','init'=>'news'),
-      'supports' => array(
-        'type' => 'checkbox',
-        'items' => array( 
-          array('label'=>'タイトル','slug'=>'title','init'=>1),
-          array('label'=>'タイトル','slug'=>'editor','init'=>1),
-          array('label'=>'タイトル','slug'=>'thumbnail','init'=>1),
-          array('label'=>'タイトル','slug'=>'revisions','init'=>0),
-      )
-    ),
-  )
-);
+
 
 
 // ob_start();
