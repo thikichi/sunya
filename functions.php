@@ -4,48 +4,43 @@
 require_once locate_template('class/ClassOption.php');
 
 $option = new ClassOption();
-// $option->delete_options(); // option削除
-$init_value = array(
-  'cpt' => array(
-    'news' => array(
-      'label' => '新着情報',
-      'slug'  => 'news',
-      'supports' => array('title','editor','thumbnail','revisions'),
-    ),
-  )
-);
 
-$init_value_temp = array();
+// $option->delete_options(); // option削除
+
+// $init_value = array(
+//   'cpt' => array(
+//     'news' => array(
+//       'label' => '新着情報',
+//       'slug'  => 'news',
+//       'supports' => array('title','editor','thumbnail','revisions'),
+//     ),
+//   )
+// );
+
+
 $form_element = array(
   'cpt' => array(
     'news' => array(
-      'label' => array('type'=>'text','items'=>array('label'=>'タイトル','name'=>'label','value'=>'新着情報')),
-      'slug'  => array('type'=>'text','items'=>array('label'=>'スラッグ','name'=>'slug','value'=>'news')),
+      'label' => array('type'=>'text','label'=>'タイトル','default'=>'新着情報'),
+      'slug'  => array('type'=>'text','label'=>'スラッグ','default'=>'news'),
       'supports' => array(
-        'type'=>'checkbox','items'=>array(
-          'label'=>'サポート','name'=>'support','value'=>array(
-            array('label'=>'タイトル','name'=>'title','value'=>true),
-            array('label'=>'エディター','name'=>'editor','value'=>true),
-            array('label'=>'サムネイル','name'=>'thumbnail','value'=>false),
-            array('label'=>'リビジョン','name'=>'revisions','value'=>true),
-          ),
+        'type'=>'checkbox','default'=>array('title'),'items'=>array(
+          array('label'=>'タイトル','value'=>'title'),
+          array('label'=>'エディタ','value'=>'editor'),
         ),
       ),
     ),
   ),
 );
 
+$init_value = array();
 foreach ($form_element['cpt']['news'] as $key => $value) {
-  if( is_array($value['items']['value']) ) {
-    foreach ($value['items']['value'] as $key2 => $value2) {
-      if( $value2['value'] )
-      $init_value_temp['cpt']['news'][$key][] = $value2['name'];
-    }
-  } else {
-    $init_value_temp['cpt']['news'][$key] = $value['items']['value'];
+  if( $value['type'] = 'text' ) {
+    $init_value['cpt']['news'][$key] = $value['default'];
+  } else if( $value['type'] = 'checkbox' ) {
+    $init_value['cpt']['news'][$key][] = $value['default'];
   }
 }
-var_dump($init_value_temp);
 
 $option->set_option( $init_value );
 $option->init_option();
