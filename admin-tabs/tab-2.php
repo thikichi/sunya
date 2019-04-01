@@ -3,19 +3,25 @@
 </p>
 <?php
 $get_posts = get_posts( array( 'post_type'=>'page', 'numberposts'=>-1 ) );
+
 ?>
 <ui class="sortable-1">
   <?php foreach ($get_posts as $get_post): ?>
+    <?php
+    if( isset($form_element['tpl'][$get_post->post_name]) ) {
+      $component = $form_element['tpl'][$get_post->post_name];
+    }
+    var_dump($component);
+    ?>
     <li class="sortable-1-item" data-pageslug="<?php echo $get_post->ID; ?>">
       <h3 class="sunya-ttl-1"><?php echo $get_post->post_title; ?></h3>
       <ul class="sortable-2">
-        <?php  if( isset($sunya_options['tpl'][$get_post->ID]) ): ?>
-          <?php $i=0; foreach ($sunya_options['tpl'][$get_post->ID] as $block_key => $block_val): ?>
+        <?php  if( isset($component) ): ?>
+          <?php $i=0; foreach ($component as $block_key => $block_val): ?>
             <li class="ui-state-default border-color-red">
               <label>
                 <?php $checked = $block_val['checked'] ? ' checked="checked"' : ''; ?>
-                <input type="checkbox" name="sunya_options[tpl][<?php echo $get_post->ID; ?>][<?php echo $block_key; ?>][checked]" value="1" data-blockname="<?php echo $block_key; ?>"<?php echo $checked; ?>><?php echo $block_key; ?>
-                <input type="hidden" name="sunya_options[tpl][<?php echo $get_post->ID; ?>][<?php echo $block_key; ?>][enable]" value="1">
+                <input type="checkbox" name="sunya_options[tpl][<?php echo $get_post->ID; ?>][<?php echo $block_key; ?>]" value="1" data-blockname="<?php echo $block_key; ?>"<?php echo $checked; ?>><?php echo $block_key; ?>
               </label>
             </li>
           <?php $i++; endforeach; ?>
@@ -28,12 +34,17 @@ $get_posts = get_posts( array( 'post_type'=>'page', 'numberposts'=>-1 ) );
   <li class="sortable-1-item" data-pageslug="undefined">
     <h3 class="sunya-ttl-1">未使用ブロック</h3>
     <ul class="sortable-2">
-      <?php foreach ($sunya_options['tpl']['undefined'] as $undefined_key => $undefined_val): ?>
-        <?php $checked = $undefined_val['checked'] ? ' checked="checked"' : ''; ?>
+      <?php foreach ($form_element['tpl']['undefined'] as $undefined_key => $undefined_val): ?>
+        <?php
+        if( isset($sunya_options['tpl']['undefined'][$undefined_key]) ) {
+          $checked = ' checked';
+        } else {
+          $checked = '';
+        }
+        ?>
         <li class="ui-state-default border-color-red">
           <label>
-            <input type="checkbox" name="sunya_options[tpl][undefined][<?php echo $undefined_key; ?>][checked]" value="1" data-blockname="<?php echo $undefined_key; ?>" <?php echo $checked; ?>><?php echo $undefined_key; ?>
-            <input type="hidden" name="sunya_options[tpl][undefined][<?php echo $undefined_key; ?>][enable]" value="1">
+            <input type="checkbox" name="sunya_options[tpl][undefined][<?php echo $undefined_key; ?>]" value="1" data-blockname="<?php echo $undefined_key; ?>"<?php echo $checked; ?>><?php echo $undefined_key; ?>
           </label>
         </li>
       <?php endforeach; ?>

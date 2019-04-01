@@ -31,6 +31,18 @@ $form_element = array(
       ),
     ),
   ),
+  'tpl' => array(
+    'undefined' => array(
+      'block-001' => true,
+      'block-002' => true,
+      'block-003' => true,
+    ),
+    'sample-page' => array(
+      'block-004' => true,
+      'block-005' => true,
+      'block-006' => false,
+    ),
+  ),
 );
 
 $init_value = array();

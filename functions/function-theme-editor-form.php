@@ -35,7 +35,7 @@ function theme_editor_form(){
           <?php // require_once dirname(dirname(__FILE__)) . '/admin-tabs/tab-1.php'; ?>
         </div>
         <div id="tabs-2">
-          <?php // require_once dirname(dirname(__FILE__)) . '/admin-tabs/tab-2.php'; ?>
+          <?php require_once dirname(dirname(__FILE__)) . '/admin-tabs/tab-2.php'; ?>
         </div>
         <div id="tabs-3">
           <?php require_once dirname(dirname(__FILE__)) . '/admin-tabs/tab-3.php'; ?>
