@@ -3,15 +3,14 @@
 </p>
 <?php
 $get_posts = get_posts( array( 'post_type'=>'page', 'numberposts'=>-1 ) );
-
 ?>
 <ui class="sortable-1">
-  <?php foreach ($get_posts as $get_post): ?>
-    <?php
-    if( isset($form_element['tpl'][$get_post->post_name]) ) {
-      $component = $form_element['tpl'][$get_post->post_name];
-    }
-    var_dump($component);
+  <?php foreach ($get_posts as $get_post):
+
+
+    // var_dump(get_post_field( 'post_name', $get_post->ID ));
+    $post_name = get_post_field( 'post_name', $get_post->ID );
+    $component = isset($form_element['tpl'][$post_name]) ? $form_element['tpl'][$post_name] : false;
     ?>
     <li class="sortable-1-item" data-pageslug="<?php echo $get_post->ID; ?>">
       <h3 class="sunya-ttl-1"><?php echo $get_post->post_title; ?></h3>
@@ -20,9 +19,11 @@ $get_posts = get_posts( array( 'post_type'=>'page', 'numberposts'=>-1 ) );
           <?php $i=0; foreach ($component as $block_key => $block_val): ?>
             <li class="ui-state-default border-color-red">
               <label>
-                <?php $checked = $block_val['checked'] ? ' checked="checked"' : ''; ?>
+                <?php $checked = isset($sunya_options['tpl'][$get_post->ID][$block_key]) ? ' checked="checked"' : ''; ?>
                 <input type="checkbox" name="sunya_options[tpl][<?php echo $get_post->ID; ?>][<?php echo $block_key; ?>]" value="1" data-blockname="<?php echo $block_key; ?>"<?php echo $checked; ?>><?php echo $block_key; ?>
               </label>
+              <input type="hidden" name="sunya_options[tpl_hidden][<?php echo $get_post->ID; ?>][<?php echo $block_key; ?>]" value="1" checked="checked">
+
             </li>
           <?php $i++; endforeach; ?>
         <?php  else: ?>
