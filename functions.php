@@ -17,6 +17,7 @@ $option = new ClassOption();
 //   )
 // );
 
+$sample_page = get_page_by_path("sample-page");
 
 $form_element = array(
   'cpt' => array(
@@ -33,17 +34,20 @@ $form_element = array(
   ),
   'tpl' => array(
     'undefined' => array(
-      'block-001' => true,
-      'block-002' => true,
-      'block-003' => true,
+      'block-001'=>'ブロック01',
+      'block-002'=>'ブロック02',
+      'block-003'=>'ブロック03',
     ),
-    'sample-page' => array(
-      'block-004' => true,
-      'block-005' => true,
-      'block-006' => false,
+    $sample_page->ID => array(
+      'block-004'=>'ブロック04',
+      'block-005'=>'ブロック05',
+      'block-006'=>'ブロック06',
     ),
   ),
 );
+
+
+
 
 $init_value = array();
 foreach ($form_element['cpt']['news'] as $key => $value) {

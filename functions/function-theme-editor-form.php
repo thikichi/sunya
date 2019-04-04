@@ -11,6 +11,9 @@ function theme_editor_form(){
   <?php
   global $sunya_options;
   global $form_element;
+  $options = isset($sunya_options) ? $sunya_options : $form_element;
+  // $options = $form_element;
+  // $options = $sunya_options;
   ?>
 
   <div class="wrap">

@@ -6,47 +6,28 @@ $get_posts = get_posts( array( 'post_type'=>'page', 'numberposts'=>-1 ) );
 ?>
 <ui class="sortable-1">
   <?php foreach ($get_posts as $get_post):
-
-
-    // var_dump(get_post_field( 'post_name', $get_post->ID ));
-    $post_name = get_post_field( 'post_name', $get_post->ID );
-    $component = isset($form_element['tpl'][$post_name]) ? $form_element['tpl'][$post_name] : false;
+    // $post_name = get_post_field( 'post_name', $get_post->ID );
+    // $component = isset($options['tpl'][$post_name]) ? $options['tpl'][$post_name] : false;
     ?>
     <li class="sortable-1-item" data-pageslug="<?php echo $get_post->ID; ?>">
       <h3 class="sunya-ttl-1"><?php echo $get_post->post_title; ?></h3>
       <ul class="sortable-2">
-        <?php  if( isset($component) ): ?>
-          <?php $i=0; foreach ($component as $block_key => $block_val): ?>
-            <li class="ui-state-default border-color-red">
-              <label>
-                <?php $checked = isset($sunya_options['tpl'][$get_post->ID][$block_key]) ? ' checked="checked"' : ''; ?>
-                <input type="checkbox" name="sunya_options[tpl][<?php echo $get_post->ID; ?>][<?php echo $block_key; ?>]" value="1" data-blockname="<?php echo $block_key; ?>"<?php echo $checked; ?>><?php echo $block_key; ?>
-              </label>
-              <input type="hidden" name="sunya_options[tpl_hidden][<?php echo $get_post->ID; ?>][<?php echo $block_key; ?>]" value="1" checked="checked">
-
-            </li>
-          <?php $i++; endforeach; ?>
-        <?php  else: ?>
-          <li class="ui-state-default border-color-red"></li>
-        <?php  endif; ?>
+        <?php foreach ($options['tpl'][$get_post->ID] as $key => $label): ?>
+          <li class="ui-state-default border-color-red">
+            <input type="hidden" name="sunya_options[tpl][<?php echo $get_post->ID; ?>][<?php echo $key; ?>]" value="<?php echo $label; ?>" data-blockname="<?php echo $label; ?>">
+            <?php echo $label; ?>
+          </li>
+        <?php endforeach; ?>
       </ul>
     </li>
   <?php endforeach; ?>
   <li class="sortable-1-item" data-pageslug="undefined">
     <h3 class="sunya-ttl-1">未使用ブロック</h3>
     <ul class="sortable-2">
-      <?php foreach ($form_element['tpl']['undefined'] as $undefined_key => $undefined_val): ?>
-        <?php
-        if( isset($sunya_options['tpl']['undefined'][$undefined_key]) ) {
-          $checked = ' checked';
-        } else {
-          $checked = '';
-        }
-        ?>
+      <?php foreach ($options['tpl']['undefined'] as $undefined_key => $undefined_label): ?>
         <li class="ui-state-default border-color-red">
-          <label>
-            <input type="checkbox" name="sunya_options[tpl][undefined][<?php echo $undefined_key; ?>]" value="1" data-blockname="<?php echo $undefined_key; ?>"<?php echo $checked; ?>><?php echo $undefined_key; ?>
-          </label>
+          <input type="hidden" name="sunya_options[tpl][undefined][<?php echo $undefined_key; ?>]" value="<?php echo $undefined_label; ?>" data-blockname="<?php echo $undefined_label; ?>">
+          <?php echo $undefined_label; ?>
         </li>
       <?php endforeach; ?>
     </ul>
