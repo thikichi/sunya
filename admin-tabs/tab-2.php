@@ -6,18 +6,20 @@ $get_posts = get_posts( array( 'post_type'=>'page', 'numberposts'=>-1 ) );
 ?>
 <ui class="sortable-1">
   <?php foreach ($get_posts as $get_post):
-    // $post_name = get_post_field( 'post_name', $get_post->ID );
-    // $component = isset($options['tpl'][$post_name]) ? $options['tpl'][$post_name] : false;
     ?>
     <li class="sortable-1-item" data-pageslug="<?php echo $get_post->ID; ?>">
       <h3 class="sunya-ttl-1"><?php echo $get_post->post_title; ?></h3>
       <ul class="sortable-2">
-        <?php foreach ($options['tpl'][$get_post->ID] as $key => $label): ?>
-          <li class="ui-state-default border-color-red">
-            <input type="hidden" name="sunya_options[tpl][<?php echo $get_post->ID; ?>][<?php echo $key; ?>]" value="<?php echo $label; ?>" data-blockname="<?php echo $label; ?>">
-            <?php echo $label; ?>
-          </li>
-        <?php endforeach; ?>
+        <?php if( isset($options['tpl'][$get_post->ID]) ): ?>
+          <?php foreach ($options['tpl'][$get_post->ID] as $key => $label): ?>
+            <li class="ui-state-default border-color-red">
+              <input type="hidden" name="sunya_options[tpl][<?php echo $get_post->ID; ?>][<?php echo $key; ?>]" value="<?php echo $label; ?>" data-blockname="<?php echo $label; ?>">
+              <?php echo $label; ?>
+            </li>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <hr>
+        <?php endif; ?>
       </ul>
     </li>
   <?php endforeach; ?>

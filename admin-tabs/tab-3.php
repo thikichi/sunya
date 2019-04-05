@@ -3,7 +3,6 @@
 <p>投稿と新着情報の設定を行います。</p>
 
 <?php 
-var_dump($sunya_options);
 
 $news = $sunya_options['cpt']['news'];
 $form = $form_element['cpt']['news'];
