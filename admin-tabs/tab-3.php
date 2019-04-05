@@ -6,6 +6,9 @@
 
 $news = $sunya_options['cpt']['news'];
 $form = $form_element['cpt']['news'];
+$news_options = $options['cpt']['news'];
+var_dump($news_options);
+
 // var_dump($form['supports']['items']);
 // $temp_arr = array('label','disp','slug','supports');
 // $news = array();
@@ -33,13 +36,9 @@ $form = $form_element['cpt']['news'];
     <h3 class="admintab-subttl">新着情報を表示する</h3>
     <p class="admintab-descrip">「表示する」を選択した場合、管理画面に「新着情報」が表示されると同時に、サイト側に表示可能な「新着情報コンポーネント」が「フレーム設定」の「コンポーネント配置」より利用できるようになります。</p>
     <div class="admintab-formparts-wrapper">
-      <?php if( isset($news['disp']) && $news['disp']==='1' ): ?>
-        <label><input type="radio" name="sunya_options[cpt][news][disp]" value="1" checked>表示する</label>
-        <label><input type="radio" name="sunya_options[cpt][news][disp]" value="0">表示しない</label>
-      <?php else: ?>
-        <label><input type="radio" name="sunya_options[cpt][news][disp]" value="1">表示する</label>
-        <label><input type="radio" name="sunya_options[cpt][news][disp]" value="0" checked>表示しない</label>
-      <?php endif; ?>
+      <?php foreach ($news_options['disp']['items'] as $item): ?>
+        <label><input type="radio" name="sunya_options[cpt][news][disp]" value="<?php echo $item['value']; ?>"><?php echo $item['label']; ?></label>
+      <?php endforeach; ?>
     </div>
 
     <h3 class="admintab-subttl">新着情報のラベル</h3>

@@ -22,6 +22,12 @@ $sample_page = get_page_by_path("sample-page");
 $form_element = array(
   'cpt' => array(
     'news' => array(
+      'disp'  => array(
+        'type'=>'radio','default'=>'1','items'=>array(
+          array('label'=>'表示する','value'=>'1'),
+          array('label'=>'表示しない','value'=>'0'),
+        )
+      ),
       'label' => array('type'=>'text','label'=>'タイトル','default'=>'新着情報'),
       'slug'  => array('type'=>'text','label'=>'スラッグ','default'=>'news'),
       'supports' => array(
