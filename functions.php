@@ -2,8 +2,10 @@
 
 // クラスファイル
 require_once locate_template('class/ClassOption.php');
+require_once locate_template('class/ClassFormValue.php');
 
 $option = new ClassOption();
+$form_value = new ClassFormValue();
 
 // $option->delete_options(); // option削除
 
@@ -52,8 +54,23 @@ $form_element = array(
   ),
 );
 
+// オプション初期値をセット
+$form_value->set_news_item( 'label', 'text', 'ラベル名', 'タイトル' );
+$form_value->set_news_item( 'slug', 'text', 'スラッグ', 'news' );
+$form_value->set_news_item( 'disp', 'radio', '新着表示ON/OFF', '1', 
+  array( array('label'=>'表示する','value'=>'1'), array('label'=>'表示しない','value'=>'0') ) );
+$form_value->set_news_item( 'supports', 'checkbox', 'サポート', array('title'), 
+  array( array('label'=>'タイトル','value'=>'title'), array('label'=>'エディタ','value'=>'editor') ) );
+
+// コンポーネントの初期値をセット
+$form_value->set_component( 'undefined', 
+  array('block-001'=>'ブロック01','block-002'=>'ブロック02','block-003'=>'ブロック03'));
+$form_value->set_component( 'sample-page', 
+  array('block-004'=>'ブロック04','block-005'=>'ブロック05','block-006'=>'ブロック06'));
 
 
+// $label = $form_value->get_news_item( 'disp' );
+// var_dump($label);
 
 $init_value = array();
 foreach ($form_element['cpt']['news'] as $key => $value) {
@@ -63,6 +80,9 @@ foreach ($form_element['cpt']['news'] as $key => $value) {
     $init_value['cpt']['news'][$key][] = $value['default'];
   }
 }
+
+
+
 
 $option->set_option( $init_value );
 $option->init_option();
