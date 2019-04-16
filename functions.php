@@ -20,7 +20,6 @@ $form_value = new ClassFormValue();
 // );
 
 $sample_page = get_page_by_path("sample-page");
-
 $form_element = array(
   'cpt' => array(
     'news' => array(
@@ -67,6 +66,8 @@ $form_value->set_component( 'undefined',
   array('block-001'=>'ブロック01','block-002'=>'ブロック02','block-003'=>'ブロック03'));
 $form_value->set_component( 'sample-page', 
   array('block-004'=>'ブロック04','block-005'=>'ブロック05','block-006'=>'ブロック06'));
+
+// $form_element = $form_value->get_all_data();
 
 
 // $label = $form_value->get_news_item( 'disp' );

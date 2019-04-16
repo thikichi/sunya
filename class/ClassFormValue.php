@@ -52,6 +52,14 @@ class ClassFormValue {
 		return $rdata;
 	}
 
+	public function get_all_data() {
+		return $this->form_element;
+	}
+
+	public function get_cpt_data( $suffix ) {
+		return $this->form_element['cpt'][$suffix];
+	}
+
 
 	// $form_element = array(
 	//   'cpt' => array(

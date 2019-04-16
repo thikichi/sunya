@@ -34,6 +34,11 @@ class ClassOption {
 		}
 	}
 
+
+	public function get_option_news( $key ) {
+		return $this->option['cpt']['news'][$key];
+	}
+
 	/*
 	 * オプションの保存
 	*/
