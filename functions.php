@@ -3,9 +3,11 @@
 // クラスファイル
 require_once locate_template('class/ClassOption.php');
 require_once locate_template('class/ClassFormValue.php');
+require_once locate_template('class/ClassHtml.php');
 
 $option = new ClassOption();
 $form_value = new ClassFormValue();
+$html = new ClassHtml();
 
 // $option->delete_options(); // option削除
 

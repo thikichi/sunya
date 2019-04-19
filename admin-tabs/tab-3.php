@@ -5,6 +5,8 @@
 <?php 
 global $form_value;
 global $option;
+global $html;
+
 $news = $sunya_options['cpt']['news'];
 var_dump( $option->get_option_news('disp') );
 $form = $form_value->get_cpt_data( 'news' );
@@ -41,13 +43,9 @@ $news_options = $options['cpt']['news'];
     <p class="admintab-descrip">「表示する」を選択した場合、管理画面に「新着情報」が表示されると同時に、サイト側に表示可能な「新着情報コンポーネント」が「フレーム設定」の「コンポーネント配置」より利用できるようになります。</p>
     <div class="admintab-formparts-wrapper">
       <?php
-      $news = $form_value->get_news_item('disp');
+      $news_disp = $form_value->get_news_item('disp');
+      echo $html->get_radio_tag( $news_disp['items'], 'disp', $news_disp['default'], 1 );
       ?>
-      <?php foreach ($news['items'] as $item):
-        $checked = $news['default']==$item['value'] ? ' checked' : '';
-        ?>
-        <label><input type="radio" name="sunya_options[cpt][news][disp]" value="<?php echo $item['value']; ?>"<?php echo $checked; ?>><?php echo $item['label']; ?></label>
-      <?php endforeach; ?>
     </div>
 
     <h3 class="admintab-subttl">新着情報のラベル</h3>
